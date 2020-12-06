@@ -66,8 +66,8 @@ public class Solution extends Solver {
     }
 
     @Override
-      public String toString() {
-        return MoreObjects.toStringHelper(BoardingPass.class).add("row", row).add("column", column).add("seatId", seatId()).toString();
-      }
+    public String toString() {
+      return MoreObjects.toStringHelper(BoardingPass.class).add("row", row).add("column", column).add("seatId", seatId()).toString();
+    }
   }
 }
