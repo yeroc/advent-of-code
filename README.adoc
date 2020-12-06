@@ -8,9 +8,13 @@ This project contains a small framework and some solutions for the awesome https
 
 === Solutions
 
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Day 1]
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d02/Solution.java[Day 2]
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d03/Solution.java[Day 3]
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d04/Solution.java[Day 4]
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d05/Solution.java[Day 5]
-- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d06/Solution.java[Day 6]
+[options="header"]
+|===
+|Day |Problem |Solution
+|1 |https://adventofcode.com/2020/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Solution]
+|2 |https://adventofcode.com/2020/day/2[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d02/Solution.java[Solution]
+|3 |https://adventofcode.com/2020/day/3[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d03/Solution.java[Solution]
+|4 |https://adventofcode.com/2020/day/4[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d04/Solution.java[Solution]
+|5 |https://adventofcode.com/2020/day/5[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d05/Solution.java[Solution]
+|6 |https://adventofcode.com/2020/day/6[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d06/Solution.java[Solution]
+|===
