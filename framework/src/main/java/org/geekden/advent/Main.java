@@ -22,7 +22,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 @Command(name="advent", mixinStandardHelpOptions = true, versionProvider = Version.class, description = "Runs solutions to Advent of Code (https://adventofcode.com/).")
-class Main implements Callable<Integer> {
+public class Main implements Callable<Integer> {
   private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
   private static final ZoneId ADVENT_TIME_ZONE = ZoneId.of("UTC-5");
 
@@ -88,7 +88,7 @@ class Main implements Callable<Integer> {
             .filter(d -> yearFilter < 0 || d.year() == yearFilter)
             .filter(d -> dayFilter < 0 || d.day() == dayFilter)
             .collect(Collectors.toCollection(TreeSet::new)), // use TreeSet to keep them sorted
-        Paths.get("src/main/resources")).execute();
+        Paths.get("puzzles")).execute();
 
     return 0;
   }

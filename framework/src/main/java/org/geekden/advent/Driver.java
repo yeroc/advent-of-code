@@ -21,7 +21,7 @@ class Driver {
 
   void execute() throws Exception {
     for (Solver day : days) {
-      Path inputFile = inputBasePath.resolve(format("%d/day%d/input.txt", day.year(), day.day()));
+      Path inputFile = inputBasePath.resolve(format("%d/%02d/input.txt", day.year(), day.day()));
 
       if (Files.notExists(inputFile)) {
         System.err.printf("Input file %s not found for %d, day %d.\n", inputFile, day.year(), day.day());
