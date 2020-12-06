@@ -3,3 +3,9 @@
 == Introduction
 
 This project contains a small framework and some solutions for the awesome https://adventofcode.com/[Advent of Code] website written in Java.
+
+== 2020
+
+=== Solutions
+
+- link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Day 1]
