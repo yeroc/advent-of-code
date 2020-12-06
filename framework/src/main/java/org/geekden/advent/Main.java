@@ -39,11 +39,11 @@ public class Main implements Callable<Integer> {
         .initializeLoadedClasses()
         .scan()) {
 
-      ClassInfoList dayClasses = scanResult.getSubclasses(Solver.class.getName()).getStandardClasses();
+      ClassInfoList solverClasses = scanResult.getSubclasses(Solver.class.getName()).getStandardClasses();
 
-      LOGGER.debug("Day classes " + dayClasses.getNames());
+      LOGGER.debug("Solvers " + solverClasses.getNames());
 
-      for (ClassInfo clazz : dayClasses) {
+      for (ClassInfo clazz : solverClasses) {
         targets.add(clazz.getName());
       }
     }
@@ -70,11 +70,11 @@ public class Main implements Callable<Integer> {
       return 1;
     }
 
-    SortedSet<Solver> days = new TreeSet<>();
+    SortedSet<Solver> solvers = new TreeSet<>();
     for (String className : targets) {
       @SuppressWarnings("unchecked")
       Class<Solver> clazz = (Class<Solver>)Class.forName(className);
-      days.add(clazz.getDeclaredConstructor().newInstance());
+      solvers.add(clazz.getDeclaredConstructor().newInstance());
     }
 
     if (nowFilter) {
@@ -84,7 +84,7 @@ public class Main implements Callable<Integer> {
     }
 
     new Driver(
-        days.stream()
+        solvers.stream()
             .filter(d -> yearFilter < 0 || d.year() == yearFilter)
             .filter(d -> dayFilter < 0 || d.day() == dayFilter)
             .collect(Collectors.toCollection(TreeSet::new)), // use TreeSet to keep them sorted

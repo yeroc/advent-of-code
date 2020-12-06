@@ -28,11 +28,21 @@ class Driver {
         continue;
       }
 
-      String partOneSolution = solve(solution::solvePartOne, inputFile);
-      printSolution(solution, partOneSolution, "I");
+      String part = "I";
+      try {
+        String partOneSolution = solve(solution::solvePartOne, inputFile);
+        printSolution(solution, partOneSolution, part);
+      } catch (Exception e) {
+        printProblem(solution, e, part);
+      }
 
-      String partTwoSolution = solve(solution::solvePartTwo, inputFile);
-      printSolution(solution, partTwoSolution, "II");
+      part = "II";
+      try {
+        String partTwoSolution = solve(solution::solvePartTwo, inputFile);
+        printSolution(solution, partTwoSolution, part);
+      } catch (Exception e) {
+        printProblem(solution, e, part);
+      }
     }
   }
 
@@ -45,5 +55,11 @@ class Driver {
   private static void printSolution(Solver day, String solution, String part) {
     System.out.printf("Solution for %d, day %d, part %-2s: [%25s]\n",
         day.year(), day.day(), part, solution);
+  }
+
+  private static void printProblem(Solver day, Throwable t, String part) {
+    System.err.printf("Problem (rather than solution) for %d, day %d, part %-2s: %s!\nTrace: ",
+        day.year(), day.day(), part, t.getMessage());
+    t.printStackTrace(System.err);
   }
 }
