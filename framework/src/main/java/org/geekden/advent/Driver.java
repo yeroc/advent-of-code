@@ -13,15 +13,18 @@ import java.util.stream.Stream;
 class Driver {
   private final Set<Solver> solutions;
   private final Path inputBasePath;
+  private final boolean useSampleData;
 
-  Driver(Set<Solver> solutions, Path inputBasePath) throws Exception {
+  Driver(Set<Solver> solutions, Path inputBasePath, boolean useSampleData) throws Exception {
     this.solutions = solutions;
     this.inputBasePath = inputBasePath;
+    this.useSampleData = useSampleData;
   }
 
   void execute() throws Exception {
+    String inputFilename = useSampleData ? "sample-input.txt" : "input.txt";
     for (Solver solution : solutions) {
-      Path inputFile = inputBasePath.resolve(format("%d/%02d/input.txt", solution.year(), solution.day()));
+      Path inputFile = inputBasePath.resolve(format("%d/%02d/%s", solution.year(), solution.day(), inputFilename));
 
       if (Files.notExists(inputFile)) {
         System.err.printf("Input file %s not found for %d, day %d.\n", inputFile, solution.year(), solution.day());

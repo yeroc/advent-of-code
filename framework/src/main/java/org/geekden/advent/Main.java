@@ -63,6 +63,9 @@ public class Main implements Callable<Integer> {
   @Option(names = { "--now", "-n" }, description = "Run solvers for today only (takes precedence over any year or day filters).")
   private boolean nowFilter = false;
 
+  @Option(names = { "--sample", "-s" }, description = "Use sample input.")
+  private boolean useSampleInput = false;
+
   @Override
   public Integer call() throws Exception {
     if (targets.isEmpty()) {
@@ -88,7 +91,8 @@ public class Main implements Callable<Integer> {
             .filter(d -> yearFilter < 0 || d.year() == yearFilter)
             .filter(d -> dayFilter < 0 || d.day() == dayFilter)
             .collect(Collectors.toCollection(TreeSet::new)), // use TreeSet to keep them sorted
-        Paths.get("puzzles")).execute();
+        Paths.get("puzzles"),
+        useSampleInput).execute();
 
     return 0;
   }
