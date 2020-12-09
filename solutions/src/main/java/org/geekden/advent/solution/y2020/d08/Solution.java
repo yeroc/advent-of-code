@@ -52,7 +52,6 @@ public class Solution extends Solver {
       } catch (IllegalStateException e) {
         // still crashing, reset state & try again...
         computer = new Computer(new ArrayList<>(program));
-        continue;
       }
     }
 
@@ -83,7 +82,7 @@ public class Solution extends Solver {
 
     void run() {
       while (advance()) {
-//        debug();
+        debug();
       }
     }
 
@@ -105,6 +104,7 @@ public class Solution extends Solver {
         break;
       case JMP:
         instructionPointer += instr.parameter - 1;
+        break;
       default:
         break;
       }
@@ -114,19 +114,19 @@ public class Solution extends Solver {
     }
 
     void debug() {
-      System.out.printf("%s: acc: %d, istr: %d\n", lastInstr, accumulator, instructionPointer);
+      LOGGER.debug("{}: acc: {}, istr: {}", lastInstr, accumulator, instructionPointer);
     }
   }
 
-  static enum Operation {
+  enum Operation {
     ACC, JMP, NOP
   }
 
   static class Instruction {
-    public final int offset;
-    public final Operation op;
-    public final long parameter;
-    public boolean executed = false;
+    final int offset;
+    final Operation op;
+    final long parameter;
+    boolean executed = false;
 
     public Instruction(int offset, Operation op, long parameter) {
       this.offset = offset;

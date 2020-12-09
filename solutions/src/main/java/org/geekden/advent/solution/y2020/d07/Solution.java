@@ -39,7 +39,7 @@ public class Solution extends Solver {
   public String solvePartTwo(Stream<String> input) {
     graph = parseRulesAsGraph(input);
 
-    long count = traverseContents(new AbstractMap.SimpleEntry<String, Integer>("shiny gold", 1))
+    long count = traverseContents(new AbstractMap.SimpleEntry<>("shiny gold", 1))
       .mapToLong(e -> e.getValue().longValue())
       .sum() - 1;
     return String.valueOf(count);
@@ -66,10 +66,8 @@ public class Solution extends Solver {
       return Streams.concat(
           Stream.of(bagEntry),
           outgoingEdges.stream()
-            .map(e -> {
-              return new AbstractMap.SimpleEntry<String, Integer>(
-                  graph.getEdgeTarget(e), (int)graph.getEdgeWeight(e) * bagEntry.getValue());
-            })
+            .map(e -> new AbstractMap.SimpleEntry<>(
+                graph.getEdgeTarget(e), (int)graph.getEdgeWeight(e) * bagEntry.getValue()))
             .flatMap(this::traverseContents));
     }
   }
@@ -84,7 +82,7 @@ public class Solution extends Solver {
         g.addVertex(bagName);
         if (!sentence.discardWordsIfMatch("no", "other", "bags")) {
           while (!sentence.isEmpty()) {
-            int bagContainsCount = Integer.valueOf(sentence.takeWords(1));
+            int bagContainsCount = Integer.parseInt(sentence.takeWords(1));
             String bagContainsName = sentence.takeWords(2);
             g.addVertex(bagContainsName);
             sentence.takeWords(1); // "bag" or "bags"
@@ -96,7 +94,7 @@ public class Solution extends Solver {
   }
 
   static class Sentence {
-    private List<String> words;
+    final List<String> words;
 
     Sentence(String sentence) {
       this.words = Arrays.stream(sentence.split(", | |\\.")).collect(Collectors.toCollection(LinkedList::new));
@@ -107,8 +105,7 @@ public class Solution extends Solver {
 
       StringBuilder builder = new StringBuilder();
       for (int i = 0; i < count; i++) {
-        builder.append(words.get(0));
-        words.remove(0);
+        builder.append(words.remove(0));
         if (i + 1 < count) builder.append(" ");
       }
       return builder.toString();

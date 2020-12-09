@@ -21,7 +21,7 @@ public class Solution extends Solver {
   @Override
   public String solvePartOne(Stream<String> input) {
     long sum = parse(input)
-        .map(Group::answers)
+        .map(g -> g.answers)
         .mapToLong(s -> s.chars().distinct().count())
         .sum();
     return String.valueOf(sum);
@@ -30,13 +30,12 @@ public class Solution extends Solver {
   @Override
   public String solvePartTwo(Stream<String> input) {
     long sum = parse(input)
-      .mapToLong(g -> {
-        return Arrays.stream(g.answers().split(""))
+      .mapToLong(g ->
+        Arrays.stream(g.answers.split(""))
             .collect(Collectors.groupingBy(c -> c, Collectors.counting()))
                 .entrySet().stream()
                     .filter(e -> e.getValue() >= g.members)
-                    .count();
-      })
+                    .count())
       .sum();
     return String.valueOf(sum);
   }
@@ -50,7 +49,7 @@ public class Solution extends Solver {
   private static Group parseGroup(String line) {
     Matcher m = SPACE_PATTERN.matcher(line);
     long members = m.results().count();
-    String answers = line.replaceAll(" ", "");
+    String answers = line.replace(" ", "");
     return new Group(members, answers);
   }
 
@@ -61,10 +60,6 @@ public class Solution extends Solver {
     Group(long members, String answers) {
       this.members = members;
       this.answers = answers;
-    }
-
-    public String answers() {
-      return answers;
     }
   }
 }

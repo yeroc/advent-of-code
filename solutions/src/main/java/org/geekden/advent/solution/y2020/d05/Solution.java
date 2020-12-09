@@ -16,7 +16,7 @@ public class Solution extends Solver {
 
   @Override
   public String solvePartOne(Stream<String> input) {
-    BoardingPass highest = input.map(s -> parseBoardingPass(s))
+    BoardingPass highest = input.map(Solution::parseBoardingPass)
         .sorted(Comparator.comparing(BoardingPass::seatId).reversed())
         .findFirst()
         .orElse(null);
@@ -26,14 +26,15 @@ public class Solution extends Solver {
   @Override
   public String solvePartTwo(Stream<String> input) {
     AtomicReference<BoardingPass> previousReference = new AtomicReference<>();
-    BoardingPass output = input.map(s -> parseBoardingPass(s))
+    BoardingPass output = input.map(Solution::parseBoardingPass)
         .sorted(Comparator.comparing(BoardingPass::seatId))
         .filter(s -> s.row > 1 && s.row < 127)
         .filter(s -> {
           BoardingPass previousBoardingPass = previousReference.getAndSet(s);
           return !(previousBoardingPass == null || previousBoardingPass.seatId() + 1 == s.seatId());
         })
-        .findFirst().get();
+        .findFirst()
+        .orElse(null);
     // the above returns the seat after the empty one...
     return String.valueOf(output.seatId() - 1);
   }
@@ -43,20 +44,20 @@ public class Solution extends Solver {
   }
 
   /** F or L = 0, B or R = 1 */
-  private static int decodeAsBinary(String binary) {
+  private static long decodeAsBinary(String binary) {
     binary = binary
        .replace('F', '0')
        .replace('B', '1')
        .replace('L', '0')
        .replace('R', '1');
-    return Integer.valueOf(binary, 2);
+    return Long.parseLong(binary, 2);
   }
 
   static class BoardingPass {
-    final int row;
-    final int column;
+    final long row;
+    final long column;
 
-    public BoardingPass(int row, int column) {
+    public BoardingPass(long row, long column) {
       this.row = row;
       this.column = column;
     }

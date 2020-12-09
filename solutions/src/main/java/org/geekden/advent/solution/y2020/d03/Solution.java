@@ -9,7 +9,7 @@ import org.geekden.advent.Solver;
 
 public class Solution extends Solver {
 
-  private final static int MAP_WIDTH = 31;
+  private static final int MAP_WIDTH = 31;
   private String map;
 
   public Solution() {
@@ -81,9 +81,9 @@ public class Solution extends Solver {
     }
   }
 
-  static final class Location {
-    public int x = 0;
-    public int y = 0;
+  static class Location {
+    int x = 0;
+    int y = 0;
 
     public void advanceBy(Slope slope) {
       x = x + slope.dx;
@@ -91,9 +91,9 @@ public class Solution extends Solver {
     }
   }
 
-  static final class Slope {
-    public final int dx;
-    public final int dy;
+  static class Slope {
+    final int dx;
+    final int dy;
 
     public Slope(int dx, int dy) {
       this.dx = dx;

@@ -30,7 +30,7 @@ public class Solution extends Solver {
   public String solvePartTwo(Stream<String> input) {
     List<Predicate<Passport>> rules = partTwoPassportRules();
     long count = parse(input)
-        .filter(rules.stream().reduce(x->true, Predicate::and))
+        .filter(rules.stream().reduce(x -> true, Predicate::and))
         .count();
     return String.valueOf(count);
   }
@@ -72,15 +72,9 @@ public class Solution extends Solver {
         return false;
       }
     });
-    rules.add(p -> {
-      return p.fields.get("hcl").matches("#([0-9a-f]){6}");
-    });
-    rules.add(p -> {
-      return p.fields.get("ecl").matches("amb|blu|brn|gry|grn|hzl|oth");
-    });
-    rules.add(p -> {
-      return p.fields.get("pid").matches("\\d{9}");
-    });
+    rules.add(p -> p.fields.get("hcl").matches("#([0-9a-f]){6}"));
+    rules.add(p -> p.fields.get("ecl").matches("amb|blu|brn|gry|grn|hzl|oth"));
+    rules.add(p -> p.fields.get("pid").matches("\\d{9}"));
 
     return rules;
   }
