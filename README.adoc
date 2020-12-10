@@ -2,7 +2,7 @@
 
 == Introduction
 
-This project contains a small framework and some solutions for the awesome https://adventofcode.com/[Advent of Code] website written in Java.
+This project contains a small framework and solutions written in boring old Java for the awesome https://adventofcode.com/[Advent of Code].
 
 == 2020
 
@@ -10,9 +10,9 @@ This project contains a small framework and some solutions for the awesome https
 
 [options="header"]
 |===
-|Day |Problem |Solution | |Day |Problem |Solution
+|Day |Problem |Solution .15+| |Day |Problem |Solution
+
 |1 |https://adventofcode.com/2020/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Solution]
-.14+|
 |14||
 |2 |https://adventofcode.com/2020/day/2[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d02/Solution.java[Solution]
 |15||
@@ -30,12 +30,12 @@ This project contains a small framework and some solutions for the awesome https
 |21||
 |9 |https://adventofcode.com/2020/day/9[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d09/Solution.java[Solution]
 |22||
-|10| |
+|10|https://adventofcode.com/2020/day/10[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d10/Solution.java[Solution]
 |23||
-|11| |
+|11||
 |24||
-|12| |
+|12||
 |25||
-|13| |
+|13||
 ||||
 |===
