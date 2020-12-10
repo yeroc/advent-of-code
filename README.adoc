@@ -8,12 +8,12 @@ This project contains a small framework and solutions written in boring old Java
 
 === Solutions
 
-[options="header"]
+[cols="7*", options="header"]
 |===
-|Day |Problem |Solution .15+| |Day |Problem |Solution
+|Day |Problem |Solution | |Day |Problem |Solution
 
 |1 |https://adventofcode.com/2020/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Solution]
-|14||
+.14+h||14||
 |2 |https://adventofcode.com/2020/day/2[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d02/Solution.java[Solution]
 |15||
 |3 |https://adventofcode.com/2020/day/3[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d03/Solution.java[Solution]
