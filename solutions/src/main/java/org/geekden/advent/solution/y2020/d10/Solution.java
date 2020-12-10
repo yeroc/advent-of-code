@@ -36,6 +36,11 @@ public class Solution extends Solver {
     return String.valueOf(oneJoltDeltas.get() * threeJoltDeltas.get());
   }
 
+  /**
+   * Credit to https://github.com/mateom99/Advent-of-Code/blob/main/2020/Day%2010/day10.cpp
+   * as I got stumped implementing a recursive solution and had trouble figuring out how to
+   * use memoization to optimize...
+   */
   @Override
   public String solvePartTwo(Stream<String> input) {
     List<Long> voltages = parseInput(input).sorted().boxed().collect(Collectors.toList());
