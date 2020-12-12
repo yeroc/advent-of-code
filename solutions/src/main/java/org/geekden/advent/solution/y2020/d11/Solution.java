@@ -123,11 +123,11 @@ public class Solution extends Solver {
       //                    up,dn,rt,lt,diagonals..
       int[] dx = new int[] { 0, 0, 1,-1,-1, 1,-1, 1 };
       int[] dy = new int[] { 1,-1, 0, 0,-1, 1, 1,-1 };
-      int maxDistance = Math.max(width / 2, height / 2) + 1;
+      int maxDistance = Math.max(width, height);
       int occupants = 0;
 
       for (int k = 0; k < dx.length; k++) {
-        for (int d = 1; d < maxDistance; d++) {
+        for (int d = 1; d <= maxDistance; d++) {
           int checkX = x + (dx[k] * d);
           int checkY = y + (dy[k] * d);
           if (checkX < 0 || checkX >= width) break;
