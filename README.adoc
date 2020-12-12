@@ -32,9 +32,9 @@ This project contains a small framework and solutions written in boring old Java
 |22||
 |10|https://adventofcode.com/2020/day/10[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d10/Solution.java[Solution]
 |23||
-|11||
+|11|https://adventofcode.com/2020/day/11[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d11/Solution.java[Solution]
 |24||
-|12||
+|12|https://adventofcode.com/2020/day/12[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d12/Solution.java[Solution]
 |25||
 |13||
 ||||
