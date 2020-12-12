@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 public abstract class Solver implements Comparable<Solver> {
   protected static final Logger LOGGER = LoggerFactory.getLogger(Solver.class);
 
-  protected final int year;
-  protected final int day;
+  private final int year;
+  private final int day;
 
   protected Solver(int year, int day) {
     this.year = year;
@@ -25,9 +25,17 @@ public abstract class Solver implements Comparable<Solver> {
     return day;
   }
 
+  private String getClassName() {
+    return this.getClass().getSimpleName();
+  }
+
   @Override
   public int compareTo(Solver o) {
-    return Comparator.comparing(Solver::year).thenComparing(Solver::day).compare(this, o);
+    return Comparator
+        .comparingInt(Solver::year)
+        .thenComparingInt(Solver::day)
+        .thenComparing(Solver::getClassName)
+        .compare(this, o);
   }
 
   public abstract String solvePartOne(Stream<String> input);
