@@ -13,9 +13,9 @@ This project contains a small framework and solutions written in boring old Java
 |Day |Problem |Solution | |Day |Problem |Solution
 
 |1 |https://adventofcode.com/2020/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d01/Solution.java[Solution]
-.14+h||14||
+.14+h||14|https://adventofcode.com/2020/day/14[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d14/Solution.java[Solution] *
 |2 |https://adventofcode.com/2020/day/2[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d02/Solution.java[Solution]
-|15||
+|15|https://adventofcode.com/2020/day/15[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d15/Solution.java[Solution]
 |3 |https://adventofcode.com/2020/day/3[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d03/Solution.java[Solution]
 |16||
 |4 |https://adventofcode.com/2020/day/4[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d04/Solution.java[Solution]
@@ -39,3 +39,4 @@ This project contains a small framework and solutions written in boring old Java
 |13|https://adventofcode.com/2020/day/13[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d13/Solution.java[Solution]
 ||||
 |===
+
