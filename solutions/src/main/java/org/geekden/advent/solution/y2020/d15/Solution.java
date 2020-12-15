@@ -1,15 +1,12 @@
 package org.geekden.advent.solution.y2020.d15;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.geekden.advent.Solver;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 
 public class Solution extends Solver {
 
@@ -36,16 +33,16 @@ public class Solution extends Solver {
         .collect(Collectors.toList());
   }
 
+
   static class Game {
-    // value -> turns
-    Multimap<Long, Long> spokenNumbersToTurns = ArrayListMultimap.create(30_000_000, 3);
+    // value -> turn
+    Map<Long, Long> spokenNumbersToTurns = new HashMap<>(30_000_000);
     long lastTurn = 0;
     long lastNumber;
 
     Game(List<Long> initialState) {
       for (Long number : initialState) {
-        lastNumber = number;
-        record(number, ++lastTurn);
+        recordTurn(number);
       }
     }
 
@@ -56,33 +53,24 @@ public class Solution extends Solver {
       return lastNumber;
     }
 
-    public void takeTurn() {
-      Collection<Long> turnsForLastNumber = spokenNumbersToTurns.get(lastNumber);
+    private void takeTurn() {
       long currentNumber;
-      if (turnsForLastNumber.size() == 1) {
-        currentNumber = 0;
+      if (!spokenNumbersToTurns.containsKey(lastNumber)) {
+        currentNumber = 0l;
       } else {
-        long prevTurn = 0l;
-        long diffTurn = 0l;
-        for (Long turn : turnsForLastNumber) {
-          diffTurn = turn - prevTurn;
-          prevTurn = turn;
-        }
-        currentNumber = diffTurn;
+        long lastTurnSpoken = spokenNumbersToTurns.get(lastNumber);
+        currentNumber = lastTurn - lastTurnSpoken;
       }
-      record(currentNumber, ++lastTurn);
-      lastNumber = currentNumber;
+      recordTurn(currentNumber);
     }
 
-    private void record(long number, long turn) {
-      spokenNumbersToTurns.put(number, turn);
-
-      Collection<Long> turnsForLastNumber = spokenNumbersToTurns.get(lastNumber);
-      if (turnsForLastNumber.size() > 2) {
-        Iterator<Long> iterator = turnsForLastNumber.iterator();
-        iterator.next();
-        iterator.remove();
+    private void recordTurn(long number) {
+      long turn = lastTurn + 1;
+      if (turn > 1) {
+        spokenNumbersToTurns.put(lastNumber, lastTurn);
       }
+      lastNumber = number;
+      lastTurn = turn;
     }
   }
 }
