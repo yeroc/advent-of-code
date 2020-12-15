@@ -36,6 +36,6 @@ This project contains a small framework and solutions written in boring old Java
 |24||
 |12|https://adventofcode.com/2020/day/12[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d12/Solution.java[Solution]
 |25||
-|13||
+|13|https://adventofcode.com/2020/day/13[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d13/Solution.java[Solution]
 ||||
 |===
