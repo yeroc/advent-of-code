@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 
 import org.geekden.advent.Solver;
 
+import com.google.common.base.Stopwatch;
+
 public class Solution extends Solver {
 
   public Solution() {
@@ -22,26 +24,29 @@ public class Solution extends Solver {
 
   @Override
   public String solvePartTwo(Stream<String> input) {
+    Stopwatch timer = Stopwatch.createStarted();
     Game game = new Game(parseInput(input));
-    return String.valueOf(game.playTo(30_000_000));
+    long result = game.playTo(30_000_000);
+    timer.stop();
+    LOGGER.debug("Elapsed: {}", timer.elapsed());
+    return String.valueOf(result);
   }
 
-  List<Long> parseInput(Stream<String> input) {
+  List<Integer> parseInput(Stream<String> input) {
     return input
         .flatMap(l -> Stream.of(l.split(",")))
-        .map(l -> Long.valueOf(l))
+        .map(l -> Integer.valueOf(l))
         .collect(Collectors.toList());
   }
 
-
   static class Game {
     // value -> turn
-    Map<Long, Long> spokenNumbersToTurns = new HashMap<>(30_000_000);
-    long lastTurn = 0;
-    long lastNumber;
+    Map<Integer, Integer> spokenNumbersToTurns = new HashMap<>(30_000_000);
+    int lastTurn = 0;
+    int lastNumber;
 
-    Game(List<Long> initialState) {
-      for (Long number : initialState) {
+    Game(List<Integer> initialState) {
+      for (Integer number : initialState) {
         recordTurn(number);
       }
     }
@@ -54,18 +59,18 @@ public class Solution extends Solver {
     }
 
     private void takeTurn() {
-      long currentNumber;
-      if (!spokenNumbersToTurns.containsKey(lastNumber)) {
-        currentNumber = 0l;
+      int currentNumber;
+      Integer lastTurnSpoken = spokenNumbersToTurns.get(lastNumber);
+      if (lastTurnSpoken == null) {
+        currentNumber = 0;
       } else {
-        long lastTurnSpoken = spokenNumbersToTurns.get(lastNumber);
         currentNumber = lastTurn - lastTurnSpoken;
       }
       recordTurn(currentNumber);
     }
 
-    private void recordTurn(long number) {
-      long turn = lastTurn + 1;
+    private void recordTurn(int number) {
+      int turn = lastTurn + 1;
       if (turn > 1) {
         spokenNumbersToTurns.put(lastNumber, lastTurn);
       }
