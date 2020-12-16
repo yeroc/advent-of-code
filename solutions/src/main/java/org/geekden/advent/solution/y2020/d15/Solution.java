@@ -8,8 +8,6 @@ import java.util.stream.Stream;
 
 import org.geekden.advent.Solver;
 
-import com.google.common.base.Stopwatch;
-
 /**
  * On my aging mid-2012 laptop Part II runs in a little over ~10 seconds which is
  * unsatisfying.  See alternate implementation for a slightly optimized version.
@@ -33,12 +31,8 @@ public class Solution extends Solver {
 
   @Override
   public String solvePartTwo(Stream<String> input) {
-    Stopwatch timer = Stopwatch.createStarted();
     Game game = new Game(parseInput(input));
-    long result = game.playTo(30_000_000);
-    timer.stop();
-    LOGGER.info("Elapsed: {}", timer.elapsed());
-    return String.valueOf(result);
+    return String.valueOf(game.playTo(30_000_000));
   }
 
   List<Integer> parseInput(Stream<String> input) {

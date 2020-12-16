@@ -1,12 +1,9 @@
 package org.geekden.advent.solution.y2020.d15;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.geekden.advent.Solver;
-
-import com.google.common.base.Stopwatch;
 
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
@@ -17,7 +14,7 @@ import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
  * Map implementation provided by the fastutil library to avoid Integer
  * Object references reducing both overall memory usage and removing the
  * need for the JVM to auto-box between primitive ints and Integers.
- * Runtime is ~5 seconds on my laptop.
+ * Runtime is ~3 seconds on my laptop.
  */
 public class Solution2 extends Solver {
 
@@ -33,19 +30,14 @@ public class Solution2 extends Solver {
 
   @Override
   public String solvePartTwo(Stream<String> input) {
-    Stopwatch timer = Stopwatch.createStarted();
     Game game = new Game(parseInput(input));
-    long result = game.playTo(30_000_000);
-    timer.stop();
-    LOGGER.info("Elapsed: {}", timer.elapsed());
-    return String.valueOf(result);
+    return String.valueOf(game.playTo(30_000_000));
   }
 
-  List<Integer> parseInput(Stream<String> input) {
+  IntStream parseInput(Stream<String> input) {
     return input
         .flatMap(l -> Stream.of(l.split(",")))
-        .map(l -> Integer.valueOf(l))
-        .collect(Collectors.toList());
+        .mapToInt(Integer::parseInt);
   }
 
   static class Game {
@@ -54,11 +46,9 @@ public class Solution2 extends Solver {
     int lastTurn = 0;
     int lastNumber;
 
-    Game(List<Integer> initialState) {
+    Game(IntStream initialState) {
       spokenNumbersToTurns.defaultReturnValue(-1);
-      for (Integer number : initialState) {
-        recordTurn(number);
-      }
+      initialState.forEach(this::recordTurn);
     }
 
     public long playTo(int turns) {
