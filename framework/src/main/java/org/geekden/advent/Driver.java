@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -39,9 +38,9 @@ class Driver {
       try {
         timer.start();
         String partOneSolution = solve(solution::solvePartOne, inputFile);
-        printSolution(solution, partOneSolution, part, timer.elapsed());
+        printSolution(solution, partOneSolution, part, timer);
       } catch (Exception e) {
-        printProblem(solution, e, part, timer.elapsed());
+        printProblem(solution, e, part, timer);
       }
 
       part = "II";
@@ -49,9 +48,9 @@ class Driver {
         timer.reset();
         timer.start();
         String partTwoSolution = solve(solution::solvePartTwo, inputFile);
-        printSolution(solution, partTwoSolution, part, timer.elapsed());
+        printSolution(solution, partTwoSolution, part, timer);
       } catch (Exception e) {
-        printProblem(solution, e, part, timer.elapsed());
+        printProblem(solution, e, part, timer);
       }
     }
   }
@@ -62,12 +61,12 @@ class Driver {
     }
   }
 
-  private static void printSolution(Solver day, String solution, String part, Duration elapsed) {
+  private static void printSolution(Solver day, String solution, String part, Stopwatch elapsed) {
     System.out.printf("Solution for %d, day %d, part %-2s: [%25s] in %s.\n",
         day.year(), day.day(), part, solution, elapsed);
   }
 
-  private static void printProblem(Solver day, Throwable t, String part, Duration elapsed) {
+  private static void printProblem(Solver day, Throwable t, String part, Stopwatch elapsed) {
     System.err.printf("Problem (rather than solution) for %d, day %d, part %-2s: %s in %s!\nTrace: ",
         day.year(), day.day(), part, t.getMessage(), elapsed);
     t.printStackTrace(System.err);
