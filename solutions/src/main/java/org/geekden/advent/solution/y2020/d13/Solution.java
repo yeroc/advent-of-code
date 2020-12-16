@@ -29,7 +29,6 @@ public class Solution extends Solver {
         .sorted(Map.Entry.comparingByValue())
         .findFirst().get();
 
-
     return String.valueOf(result.getKey() * result.getValue());
   }
 
