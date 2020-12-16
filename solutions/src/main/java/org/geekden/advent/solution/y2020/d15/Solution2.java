@@ -1,8 +1,6 @@
 package org.geekden.advent.solution.y2020.d15;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,18 +8,20 @@ import org.geekden.advent.Solver;
 
 import com.google.common.base.Stopwatch;
 
-/**
- * On my aging mid-2012 laptop Part II runs in a little over ~10 seconds which is
- * unsatisfying.  See alternate implementation for a slightly optimized version.
- * I've kept this one as it uses core Java libraries and the alternate implementation
- * uses the exact same algorithm just with optimized Map implementation from the
- * fastutil library.
- *
- * @see Solution2
- */
-public class Solution extends Solver {
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 
-  public Solution() {
+/**
+ * On my aging mid-2012-era laptop this is roughly twice is fast as my
+ * other solution.  The only difference is this one uses an alternate
+ * Map implementation provided by the fastutil library to avoid Integer
+ * Object references reducing both overall memory usage and removing the
+ * need for the JVM to auto-box between primitive ints and Integers.
+ * Runtime is ~5 seconds on my laptop.
+ */
+public class Solution2 extends Solver {
+
+  public Solution2() {
     super(2020, 15);
   }
 
@@ -50,11 +50,12 @@ public class Solution extends Solver {
 
   static class Game {
     // value -> turn
-    Map<Integer, Integer> spokenNumbersToTurns = new HashMap<>(30_000_000);
+    Int2IntMap spokenNumbersToTurns = new Int2IntOpenHashMap(30_000_000);
     int lastTurn = 0;
     int lastNumber;
 
     Game(List<Integer> initialState) {
+      spokenNumbersToTurns.defaultReturnValue(-1);
       for (Integer number : initialState) {
         recordTurn(number);
       }
@@ -69,8 +70,8 @@ public class Solution extends Solver {
 
     private void takeTurn() {
       int currentNumber;
-      Integer lastTurnSpoken = spokenNumbersToTurns.get(lastNumber);
-      if (lastTurnSpoken == null) {
+      int lastTurnSpoken = spokenNumbersToTurns.get(lastNumber);
+      if (lastTurnSpoken == -1) {
         currentNumber = 0;
       } else {
         currentNumber = lastTurn - lastTurnSpoken;
