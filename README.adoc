@@ -19,7 +19,7 @@ This project contains a small framework and solutions written in boring old Java
 |3 |https://adventofcode.com/2020/day/3[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d03/Solution.java[Solution]
 |16|https://adventofcode.com/2020/day/16[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d16/Solution.java[Solution]
 |4 |https://adventofcode.com/2020/day/4[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d04/Solution.java[Solution]
-|17||
+|17|https://adventofcode.com/2020/day/17[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d17/Solution.java[Solution]
 |5 |https://adventofcode.com/2020/day/5[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d05/Solution.java[Solution]
 |18||
 |6 |https://adventofcode.com/2020/day/6[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2020/d06/Solution.java[Solution]
