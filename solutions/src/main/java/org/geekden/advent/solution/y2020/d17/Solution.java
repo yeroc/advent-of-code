@@ -65,6 +65,8 @@ public class Solution extends Solver {
   }
 
   static class PocketDimension4d {
+    // true if we're considering 4 dimensions
+    final boolean hyper;
     // x -> y -> z -> w -> state
     Map<Integer, Map<Integer, Map<Integer, Map<Integer, Boolean>>>> cube = new HashMap<>();
     Range xRange = new Range();
@@ -72,7 +74,6 @@ public class Solution extends Solver {
     Range zRange = new Range();
     Range wRange = new Range();
     int totalActiveCubes = 0;
-    final boolean hyper;
 
     public PocketDimension4d(boolean hyper) {
       this.hyper = hyper;
@@ -103,16 +104,12 @@ public class Solution extends Solver {
       int startW = hyper ? -1 : 0;
       int endW = hyper ? 1 : 0;
 
-      for (int i = -1; i <= 1; i++) {
-        for (int j = -1; j <= 1; j++) {
-          for (int k = -1; k <= 1; k++) {
-            for (int l = startW; l <= endW ; l++) {
-              if (i == 0 && j == 0 && k == 0 && l == 0) continue;
-              int checkX = x + i;
-              int checkY = y + j;
-              int checkZ = z + k;
-              int checkW = w + l;
-              if (getCubeState(checkX, checkY, checkZ, checkW)) {
+      for (int dx = -1; dx <= 1; dx++) {
+        for (int dy = -1; dy <= 1; dy++) {
+          for (int dz = -1; dz <= 1; dz++) {
+            for (int dw = startW; dw <= endW ; dw++) {
+              if (dx == 0 && dy == 0 && dz == 0 && dw == 0) continue;
+              if (getCubeState(x + dx, y + dy, z + dz, w + dw)) {
                 activeCubes++;
               }
             }
@@ -123,11 +120,15 @@ public class Solution extends Solver {
     }
 
     public PocketDimension4d cycle() {
+      // if not hyper then constrain to 3d...
+      int startW = hyper ? wRange.min - 1 : 0;
+      int endW = hyper ? wRange.max + 1 : 0;
+
       PocketDimension4d nextCycle = new PocketDimension4d(hyper);
       for (int x = xRange.min - 1; x <= xRange.max + 1; x++) {
         for (int y = yRange.min - 1; y <= yRange.max + 1; y++) {
           for (int z = zRange.min - 1; z <= zRange.max + 1; z++) {
-            for (int w = wRange.min - 1; w <= wRange.max + 1; w++) {
+            for (int w = startW; w <= endW; w++) {
               int neighbours = countNeighbours(x, y, z, w);
               boolean state = getCubeState(x, y, z, w);
               if (state && neighbours > 1 && neighbours < 4 ||
