@@ -38,7 +38,7 @@ public class Solution extends Solver {
   List<Integer> parseInput(Stream<String> input) {
     return input
         .flatMap(l -> Stream.of(l.split(",")))
-        .map(l -> Integer.valueOf(l))
+        .map(Integer::valueOf)
         .collect(Collectors.toList());
   }
 
