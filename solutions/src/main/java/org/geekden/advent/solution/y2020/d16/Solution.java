@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ArrayListMultimap;
@@ -21,7 +21,7 @@ import com.google.common.collect.Sets;
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 16);
+    super(2020, 16, "Ticket Translation");
   }
 
   @Override

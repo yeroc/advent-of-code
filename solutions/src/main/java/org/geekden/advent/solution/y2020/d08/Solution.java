@@ -6,14 +6,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import com.google.common.base.MoreObjects;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 8);
+    super(2020, 8, "Handheld Halting");
   }
 
   @Override

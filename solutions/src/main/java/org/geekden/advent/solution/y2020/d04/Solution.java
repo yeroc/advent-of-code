@@ -10,14 +10,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import one.util.streamex.StreamEx;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 4);
+    super(2020, 4, "Passport Processing");
   }
 
   @Override

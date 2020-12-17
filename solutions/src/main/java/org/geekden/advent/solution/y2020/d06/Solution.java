@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import one.util.streamex.StreamEx;
 
@@ -15,7 +15,7 @@ public class Solution extends Solver {
   private static final Pattern SPACE_PATTERN = Pattern.compile(" ");
 
   public Solution() {
-    super(2020, 6);
+    super(2020, 6, "Custom Customs");
   }
 
   @Override

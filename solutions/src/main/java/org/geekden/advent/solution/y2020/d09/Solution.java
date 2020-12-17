@@ -6,7 +6,7 @@ import java.util.OptionalLong;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import com.google.common.collect.EvictingQueue;
 import com.google.common.collect.Sets;
@@ -19,7 +19,7 @@ public class Solution extends Solver {
   private long sumToFind;
 
   public Solution() {
-    super(2020, 9);
+    super(2020, 9, "Encoding Error");
   }
 
   @Override

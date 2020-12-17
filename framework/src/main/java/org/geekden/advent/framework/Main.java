@@ -1,4 +1,4 @@
-package org.geekden.advent;
+package org.geekden.advent.framework;
 
 import java.nio.file.Paths;
 import java.time.ZoneId;

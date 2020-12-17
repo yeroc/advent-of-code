@@ -1,4 +1,4 @@
-package org.geekden.advent;
+package org.geekden.advent.framework;
 
 import static java.lang.String.format;
 
@@ -29,7 +29,7 @@ class Driver {
       Path inputFile = inputBasePath.resolve(format("%d/%02d/%s", solution.year(), solution.day(), inputFilename));
 
       if (Files.notExists(inputFile)) {
-        System.err.printf("Input file %s not found for %d, day %d.\n", inputFile, solution.year(), solution.day());
+        System.err.printf("Input file %s not found for %d, day %d.%n", inputFile, solution.year(), solution.day());
         continue;
       }
 
@@ -62,12 +62,12 @@ class Driver {
   }
 
   private static void printSolution(Solver day, String solution, String part, Stopwatch elapsed) {
-    System.out.printf("Solution for %d, day %d, part %-2s: [%25s] in %s.\n",
-        day.year(), day.day(), part, solution, elapsed);
+    System.out.printf("Solution is [%25s] for %d, day %2d, %25s part %-2s in %s%n",
+        solution, day.year(), day.day(), day.name(), part, elapsed);
   }
 
   private static void printProblem(Solver day, Throwable t, String part, Stopwatch elapsed) {
-    System.err.printf("Problem (rather than solution) for %d, day %d, part %-2s: %s in %s!\nTrace: ",
+    System.err.printf("Problem (rather than solution) for %d, day %d, part %-2s: %s in %s!%nTrace: ",
         day.year(), day.day(), part, t.getMessage(), elapsed);
     t.printStackTrace(System.err);
   }

@@ -10,12 +10,12 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 13);
+    super(2020, 13, "Shuttle Search");
   }
 
   @Override
@@ -56,7 +56,7 @@ public class Solution extends Solver {
         minValue += runningProduct;
       }
       runningProduct *= k;
-      System.out.printf("Sum so far: %d, product so far: %d\n", minValue, runningProduct);
+//      System.out.printf("Sum so far: %d, product so far: %d\n", minValue, runningProduct);
     }
     return String.valueOf(minValue);
   }

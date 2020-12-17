@@ -6,12 +6,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 17);
+    super(2020, 17, "Conway Cubes");
   }
 
   @Override

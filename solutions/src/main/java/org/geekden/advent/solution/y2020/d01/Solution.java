@@ -2,17 +2,17 @@ package org.geekden.advent.solution.y2020.d01;
 
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 1);
+    super(2020, 1, "Report Repair");
   }
 
   @Override
   public String solvePartOne(Stream<String> input) {
-    int[] ledgerInts = input.mapToInt((s) -> Integer.valueOf(s)).toArray();
+    int[] ledgerInts = input.mapToInt(Integer::valueOf).toArray();
 
     for (int i = 0; i < ledgerInts.length; i++) {
       for (int j = 0; j < ledgerInts.length; j++) {
@@ -27,7 +27,7 @@ public class Solution extends Solver {
 
   @Override
   public String solvePartTwo(Stream<String> input) {
-    int[] ledgerInts = input.mapToInt((s) -> Integer.valueOf(s)).toArray();
+    int[] ledgerInts = input.mapToInt(Integer::valueOf).toArray();
 
     for (int i = 0; i < ledgerInts.length; i++) {
       for (int j = 0; j < ledgerInts.length; j++) {

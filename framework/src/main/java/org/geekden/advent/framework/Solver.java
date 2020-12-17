@@ -1,4 +1,4 @@
-package org.geekden.advent;
+package org.geekden.advent.framework;
 
 import java.util.Comparator;
 import java.util.stream.Stream;
@@ -11,10 +11,16 @@ public abstract class Solver implements Comparable<Solver> {
 
   private final int year;
   private final int day;
+  private final String name;
 
   protected Solver(int year, int day) {
+    this(year, day, null);
+  }
+
+  protected Solver(int year, int day, String name) {
     this.year = year;
     this.day = day;
+    this.name = name;
   }
 
   public int year() {
@@ -23,6 +29,10 @@ public abstract class Solver implements Comparable<Solver> {
 
   public int day() {
     return day;
+  }
+
+  public String name() {
+    return name != null ? "“" + name + "”" : "[" + this.getClass().getSimpleName() + "]";
   }
 
   private String getClassName() {

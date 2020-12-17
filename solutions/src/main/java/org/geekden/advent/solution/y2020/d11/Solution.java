@@ -3,7 +3,7 @@ package org.geekden.advent.solution.y2020.d11;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 public class Solution extends Solver {
   private int width;
@@ -11,7 +11,7 @@ public class Solution extends Solver {
   private String initialState;
 
   public Solution() {
-    super(2020, 11);
+    super(2020, 11, "Seating System");
   }
 
   @Override

@@ -1,4 +1,4 @@
-package org.geekden.advent;
+package org.geekden.advent.framework;
 
 import picocli.CommandLine.IVersionProvider;
 

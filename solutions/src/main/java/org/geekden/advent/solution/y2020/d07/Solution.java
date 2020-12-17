@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 import org.jgrapht.Graph;
 import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -22,7 +22,7 @@ public class Solution extends Solver {
   private Graph<String, DefaultWeightedEdge> graph;
 
   public Solution() {
-    super(2020, 7);
+    super(2020, 7, "Handy Haversacks");
   }
 
   @Override

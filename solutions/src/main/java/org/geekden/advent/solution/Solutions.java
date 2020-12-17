@@ -1,6 +1,6 @@
 package org.geekden.advent.solution;
 
-import org.geekden.advent.Main;
+import org.geekden.advent.framework.Main;
 
 public class Solutions {
 

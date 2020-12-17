@@ -4,14 +4,14 @@ import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import com.google.common.base.MoreObjects;
 
 public class Solution extends Solver {
 
   public Solution() {
-    super(2020, 5);
+    super(2020, 5, "Binary Boarding");
   }
 
   @Override

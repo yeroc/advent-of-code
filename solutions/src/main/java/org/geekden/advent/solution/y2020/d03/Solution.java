@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 public class Solution extends Solver {
 
@@ -13,7 +13,7 @@ public class Solution extends Solver {
   private String map;
 
   public Solution() {
-    super(2020, 3);
+    super(2020, 3, "Toboggan Trajectory");
   }
 
   @Override
