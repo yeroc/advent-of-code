@@ -3,7 +3,7 @@ package org.geekden.advent.solution.y2020.d15;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.geekden.advent.Solver;
+import org.geekden.advent.framework.Solver;
 
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
@@ -19,7 +19,7 @@ import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 public class Solution2 extends Solver {
 
   public Solution2() {
-    super(2020, 15);
+    super(2020, 15, "Rambunctious Recitation (Optimized)");
   }
 
   @Override
