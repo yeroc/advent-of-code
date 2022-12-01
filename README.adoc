@@ -40,3 +40,12 @@ This project contains a small framework and solutions written in boring old Java
 ||||
 |===
 
+== 2022
+
+=== Solutions
+
+[cols="7*", options="header"]
+|===
+|Day |Problem |Solution | |Day |Problem |Solution
+
+|1 |https://adventofcode.com/2022/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2022/d01/Solution.java[Solution]
