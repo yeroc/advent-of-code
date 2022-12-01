@@ -49,3 +49,4 @@ This project contains a small framework and solutions written in boring old Java
 |Day |Problem |Solution | |Day |Problem |Solution
 
 |1 |https://adventofcode.com/2022/day/1[Description] |link:solutions/src/main/java/org/geekden/advent/solution/y2022/d01/Solution.java[Solution]
+.14+h||14|https://adventofcode.com/2022/day/14[Description] |
