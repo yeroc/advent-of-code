@@ -5,7 +5,7 @@ import org.geekden.advent.framework.Main;
 public class Solutions {
 
   public static void main(String[] args) throws Exception {
-    Main.main(args);
+    Main.main(new String[]{"--now"});
   }
 
 }
